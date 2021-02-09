@@ -60,7 +60,7 @@ button {
 
 .col:hover {
     cursor: pointer;
-    background-color: rgba( 51, 51, 51, .25);
+    background-color: rgba( 0, 0, 0, 0.2 );
 }
 
 
