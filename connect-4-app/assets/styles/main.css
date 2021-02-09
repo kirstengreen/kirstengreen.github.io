@@ -4,7 +4,8 @@
 
 body {
     width: 80%;
-    max-width: 1000px;
+    min-width: 1100px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
@@ -38,7 +39,7 @@ button {
     justify-content: space-between;
     height: 800px;
     margin: 40px auto;
-    padding: 30px;
+    padding: 16px;
     background-color: rgba( 77, 124, 168, 1);
     border-radius: 20px;
 }
@@ -48,6 +49,16 @@ button {
     flex-direction: column-reverse;
     justify-content: space-between;
     flex-wrap: nowrap;
+}
+
+.col {
+    padding: 16px;
+    border-radius: 20px;
+}
+
+.col:hover {
+    cursor: pointer;
+    background-color: rgba( 51, 51, 51, .25);
 }
 
 .cell {
