@@ -46,14 +46,11 @@ button {
     border-radius: 20px;
 }
 
-.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7 {
+.col {
     display: flex;
     flex-direction: column-reverse;
     justify-content: space-between;
     flex-wrap: nowrap;
-}
-
-.col {
     padding: 16px;
     border-radius: 20px;
 }

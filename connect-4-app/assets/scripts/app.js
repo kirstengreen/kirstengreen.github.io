@@ -8,7 +8,7 @@ class Player {
     constructor ( name, checker ) {
         this.name = name;
         this.checkerColor = checker;
-        this.moves = [];
+        // this.moves = [];
     }
 }
 
@@ -26,19 +26,22 @@ const player2 = new Player( 'Player 2', 'yellow' );
 
 $( () => {
 
+    const boardCell = $( 'div' ).find( '.cell' ); // creates a collection of every div.cell found
     let turn = 0;
 
-    $( '.col' ).on( 'click' , ( event ) => {
+    // tracking how many cells have been filled
+    for ( let i = 0; i < boardCell.length; i++ ) {
+        $( boardCell[i] ).one( 'click' , ( event ) => {
+            turn ++
+            if ( turn % 2 === 0) {
+                $( event.currentTarget ).addClass( player2.checkerColor ).attr('value', 'filled' );
+            } else {
+                $( event.currentTarget ).addClass( player1.checkerColor ).attr('value', 'filled' );
+            }
+        } );
 
-        turn++
-
-        if ( turn % 2 === 0 ) {
-            $( event.currentTarget ).children( '.cell:nth-child(1)' ).addClass( player2.checkerColor );
-        } else {
-            $( event.currentTarget ).children( '.cell:nth-child(1)' ).addClass( player1.checkerColor );
-        }
-
-    });
-
+        // const winConditions = [];
+        // function to check if either player has won
+    }
 
 } );
