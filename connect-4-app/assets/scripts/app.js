@@ -26,14 +26,19 @@ const player2 = new Player( 'Player 2', 'yellow' );
 
 $( () => {
 
+    let turn = 0;
 
-    $( '.col' ).hover(
-        function() {
-            $( this ).children( '.cell:last-child' ).addClass( 'red' );
-        }, function() {
-            $( this ).children( '.cell:last-child' ).removeClass( 'red' );
+    $( '.col' ).on( 'click' , ( event ) => {
+
+        turn++
+
+        if ( turn % 2 === 0 ) {
+            $( event.currentTarget ).children( '.cell:nth-child(1)' ).addClass( player2.checkerColor );
+        } else {
+            $( event.currentTarget ).children( '.cell:nth-child(1)' ).addClass( player1.checkerColor );
         }
-    );
+
+    });
 
 
 } );
