@@ -26,22 +26,41 @@ const player2 = new Player( 'Player 2', 'yellow' );
 
 $( () => {
 
-    const boardCell = $( 'div' ).find( '.cell' ); // creates a collection of every div.cell found
-    let turn = 0;
+    // tracks how many plays have been made and determines whose turn it is
+    // ODD = player that goes first & EVEN = player that goes second
+    let turn = 0; 
 
-    // tracking how many cells have been filled
-    for ( let i = 0; i < boardCell.length; i++ ) {
-        $( boardCell[i] ).one( 'click' , ( event ) => {
-            turn ++
-            if ( turn % 2 === 0) {
-                $( event.currentTarget ).addClass( player2.checkerColor ).attr('value', 'filled' );
+
+    // listens for the player to click a column 
+    $( '.col' ).on( 'click' , ( event ) => {
+        let cellTracker = 1; // tracks the cells that are filled in the column 
+        let cellFilled = false; // allows a break in the loop when a cell is filled
+
+
+        // places the players checker on event
+        // while all of the cells are not filled, find the first cell that can be filled
+        while ( cellTracker <= 6 && cellFilled === false ) {
+            if ( $( event.currentTarget ).children( `.cell:nth-child(${cellTracker})` ).hasClass( 'filled' ) ) {
+                cellTracker ++; // cell is filled, check next cell
             } else {
-                $( event.currentTarget ).addClass( player1.checkerColor ).attr('value', 'filled' );
+                turn ++; // turn complete, add one
+
+                // fill color based on player's turn
+                if ( turn % 2 !== 0 ) {
+                    $( event.currentTarget ).children( `.cell:nth-child(${cellTracker})` ).addClass( `${player1.checkerColor} filled` );
+                } else if ( turn % 2 === 0 ) {
+                    $( event.currentTarget ).children( `.cell:nth-child(${cellTracker})` ).addClass( `${player2.checkerColor} filled` );
+                }
+
+                cellFilled = true; // cell is now filled, exit loop
             }
-        } );
+        }
 
         // const winConditions = [];
         // function to check if either player has won
-    }
+
+
+    } );
+
 
 } );
