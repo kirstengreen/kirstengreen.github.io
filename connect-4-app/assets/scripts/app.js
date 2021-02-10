@@ -20,6 +20,22 @@ const player2 = new Player( 'Player 2', 'yellow' );
 
 
 
+////////////////////
+// WIN CONDITIONS //
+////////////////////
+
+
+const verticalWinConditions = [];
+// const checkForVerticalWin = () => {}
+
+const horizontalWinConditions = [];
+// const checkForHorizontalWin = () => {}
+
+const diagonalWinConditions = [];
+// const checkForDiagonalWin = () => {}
+
+
+
 ////////////////
 // AFTER LOAD //
 ////////////////
@@ -56,8 +72,7 @@ $( () => {
             }
         }
 
-        // const winConditions = [];
-        // function to check if either player has won
+        // function(s) to check if either player has won
 
 
     } );
