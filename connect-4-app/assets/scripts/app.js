@@ -39,6 +39,24 @@ let turn = 0;
 
 
 
+//////////////////////
+// CLEAR GAME BOARD //
+//////////////////////
+
+
+const clearBoard = () => {
+
+    // reset turn to 0
+    turn = 0;
+
+    // remove classes from boardCells
+    for ( let i = 0; i < boardCells.length; i++ ) {
+        $( boardCells[i] ).removeClass( 'filled red yellow' );
+    }
+
+}
+
+
 ///////////////////////////
 // DEFINE WIN CONDITIONS //
 ///////////////////////////
@@ -78,7 +96,7 @@ const checkForWin = () => {
     // helped me understand how to check each board cell against each possible win condition
 
     // checks each winCondition to see if requirements are met for a win
-    for ( let i = 0; i < winConditions.length; i++) {
+    for ( let i = 0; i < winConditions.length; i++ ) {
 
         // targets the cells that need to be filled to meet winCondition[i]
         const checker1 = boardCells[ winConditions[ i ][ 0 ] ];
@@ -94,7 +112,7 @@ const checkForWin = () => {
 
             player1Wins ++;
             alert( `${ player1.name } wins!` );
-            // clearBoard();
+            clearBoard();
             $( 'div .player1 .score' ).empty().text( `${ player1Wins }` );
         
         // if all four cells match player 2's checker color, player 2 wins 
@@ -105,7 +123,7 @@ const checkForWin = () => {
 
             player2Wins ++;
             alert( `${ player2.name } wins!` );
-            // clearBoard();
+            clearBoard();
             $( 'div .player2 .score' ).empty().text( `${ player2Wins }` );
 
         }
