@@ -84,6 +84,7 @@ const checkForWin = () => {
             $( checker4 ).hasClass( `${ player1.checkerColor }` ) ) {
 
             player1Wins ++;
+            alert( `${ player1.name } wins!` );
             $( 'div .player1 .score' ).empty().text( `${ player1Wins }` );
         
         // if all four cells match player 2's checker color, player 2 wins 
@@ -93,6 +94,7 @@ const checkForWin = () => {
             $( checker4 ).hasClass( `${ player2.checkerColor }` ) ) {
 
             player2Wins ++;
+            alert( `${ player2.name } wins!` );
             $( 'div .player2 .score' ).empty().text( `${ player2Wins }` );
         }
     }
@@ -120,16 +122,16 @@ $( () => {
         // places the players checker on event
         // while all of the cells are not filled, find the first cell that can be filled
         while ( cellTracker <= 6 && cellFilled === false ) {
-            if ( $( event.currentTarget ).children( `.cell:nth-child(${cellTracker})` ).hasClass( 'filled' ) ) {
+            if ( $( event.currentTarget ).children( `.cell:nth-child( ${ cellTracker } )` ).hasClass( 'filled' ) ) {
                 cellTracker ++; // cell is filled, check next cell
             } else {
                 turn ++; // turn complete, add one
 
                 // fill color based on player's turn
                 if ( turn % 2 !== 0 ) {
-                    $( event.currentTarget ).children( `.cell:nth-child(${cellTracker})` ).addClass( `${player1.checkerColor} filled` );
+                    $( event.currentTarget ).children( `.cell:nth-child( ${ cellTracker } )` ).addClass( `${ player1.checkerColor } filled` );
                 } else if ( turn % 2 === 0 ) {
-                    $( event.currentTarget ).children( `.cell:nth-child(${cellTracker})` ).addClass( `${player2.checkerColor} filled` );
+                    $( event.currentTarget ).children( `.cell:nth-child( ${ cellTracker } )` ).addClass( `${ player2.checkerColor } filled` );
                 }
 
                 cellFilled = true; // cell is now filled, exit loop
