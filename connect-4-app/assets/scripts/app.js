@@ -57,6 +57,27 @@ const clearBoard = () => {
 }
 
 
+
+//////////////////////
+// CLEAR GAME SCORE //
+//////////////////////
+
+
+const clearScore = () => {
+
+    // reset player wins to 0
+    player1Wins = 0;
+    player2Wins = 0;
+
+    // reset score filler text to 0
+    $( 'div .player1 .score' ).empty().text( '0' );
+    $( 'div .player2 .score' ).empty().text( '0' );
+
+}
+
+
+
+
 ///////////////////////////
 // DEFINE WIN CONDITIONS //
 ///////////////////////////
@@ -173,6 +194,13 @@ $( () => {
     $( 'button.clear-board' ).on( 'click' , ( ) => {
         clearBoard();
     } );
+
+
+    // clears board and score when a player clicks "Clear Score" button
+    $( 'button.clear-score' ).on( 'click', () => {
+        clearBoard();
+        clearScore();
+    } ); 
     
 
 } );
