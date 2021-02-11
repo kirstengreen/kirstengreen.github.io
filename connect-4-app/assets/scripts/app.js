@@ -20,9 +20,13 @@ const player2 = new Player( 'Player 2', 'yellow' );
 
 
 
-////////////////////
-// WIN CONDITIONS //
-////////////////////
+///////////////////////////
+// DEFINE WIN CONDITIONS //
+///////////////////////////
+
+
+// with a little help from Ania Kubów https://www.youtube.com/watch?v=dBlSiGOFjUY
+// helped me understand how to check each board cell against each possible win condition
 
 
 const winConditions = [
@@ -50,11 +54,45 @@ const winConditions = [
     [ 12, 19, 26, 33 ], [ 19, 26, 33, 40 ], [ 18, 25, 32, 39 ] 
 ];
 
-// creates an array containing the boards cells
-// Need this in order to match with win condition array
-const boardCells = $( "div.cell" ).toArray();
-// console.log( $( boardCells[0] ).hasClass( 'filled' ) ); // false by default, on click true
 
+// creates an array containing all of the board's cells
+// need this in order to match with win condition array
+const boardCells = $( 'div.cell' ).toArray();
+
+
+// checks to see if a player has won the game
+const checkForWin = () => {
+
+    // checks each winCondition to see if requirements are met for a win
+    for ( let i = 0; i < winConditions.length; i++) {
+
+        // targets the cells that need to be filled to meet winCondition[i]
+        const checker1 = boardCells[ winConditions[ i ][ 0 ] ];
+        const checker2 = boardCells[ winConditions[ i ][ 1 ] ];
+        const checker3 = boardCells[ winConditions[ i ][ 2 ] ];
+        const checker4 = boardCells[ winConditions[ i ][ 3 ] ];
+
+        // if all four cells match player 1's checker color, player 1 wins 
+        if ( $( checker1 ).hasClass( `${player1.checkerColor}` ) && 
+            $( checker2 ).hasClass( `${player1.checkerColor}` ) && 
+            $( checker3 ).hasClass( `${player1.checkerColor}` ) && 
+            $( checker4 ).hasClass( `${player1.checkerColor}` ) ) {
+
+            const $h1 = $( '<h1>' ).addClass( 'winner' ).text( `${ player1.name } wins!` );
+            $( '.result' ).append( $h1 );
+        
+        // if all four cells match player 2's checker color, player 2 wins 
+        } else if ( $( checker1 ).hasClass( `${player2.checkerColor}` ) && 
+            $( checker2 ).hasClass( `${player2.checkerColor}` ) && 
+            $( checker3 ).hasClass( `${player2.checkerColor}` ) && 
+            $( checker4 ).hasClass( `${player2.checkerColor}` ) ) {
+
+            const $h1 = $( '<h1>' ).addClass( 'winner' ).text( `${ player2.name } wins!` );
+            $( '.result' ).append( $h1 );
+
+        }
+    }
+};
 
 
 
@@ -94,7 +132,7 @@ $( () => {
             }
         }
 
-        // checkForWin();
+        checkForWin();
 
     } );
 
