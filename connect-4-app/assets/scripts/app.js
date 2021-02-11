@@ -13,16 +13,15 @@ class Player {
 }
 
 
+// define two players
 const player1 = new Player( 'Player 1', 'red' );
-// console.log( player1 );
 const player2 = new Player( 'Player 2', 'yellow' );
-// console.log( player2 );
 
 
 
-///////////////
-// VARIABLES //
-///////////////
+//////////////////////
+// GLOBAL VARIABLES //
+//////////////////////
 
 
 // creates an array containing all of the board's cells
@@ -37,6 +36,12 @@ let player2Wins = 0;
 // ODD = player that goes first & EVEN = player that goes second
 let turn = 0;
 
+// player turn text
+const player1Turn = `${ player1.name }'s turn`;
+const player2Turn = `${ player2.name }'s turn`;
+
+// show whoes turn it is on page load
+$( '.player-turn' ).text( player1Turn );
 
 
 //////////////////////
@@ -53,6 +58,9 @@ const clearBoard = () => {
     for ( let i = 0; i < boardCells.length; i++ ) {
         $( boardCells[i] ).removeClass( 'filled red yellow' );
     }
+
+    // reset turn text to first player
+    $( '.player-turn' ).empty().text( player1Turn );
 
 }
 
@@ -74,7 +82,6 @@ const clearScore = () => {
     $( 'div .player2 .score' ).empty().text( '0' );
 
 }
-
 
 
 
@@ -160,6 +167,7 @@ const checkForWin = () => {
 
 $( () => {
 
+
     // listens for the player to click a column 
     $( '.col' ).on( 'click' , ( event ) => {
         let cellTracker = 1; // tracks the cells that are filled in the column 
@@ -176,8 +184,10 @@ $( () => {
                 // fill color based on player's turn
                 if ( turn % 2 !== 0 ) {
                     $( event.currentTarget ).children( `.cell:nth-child( ${ cellTracker } )` ).addClass( `${ player1.checkerColor } filled` );
+                    $( '.player-turn' ).empty().text( player2Turn );
                 } else if ( turn % 2 === 0 ) {
                     $( event.currentTarget ).children( `.cell:nth-child( ${ cellTracker } )` ).addClass( `${ player2.checkerColor } filled` );
+                    $( '.player-turn' ).empty().text( player1Turn );
                 }
 
                 cellFilled = true; // cell is now filled, exit loop
