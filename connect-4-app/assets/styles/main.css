@@ -32,6 +32,38 @@ button {
 
 
 
+/* DIRECTION AND SCOREBOARD STYLES */
+
+.information {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 40px auto;
+}
+
+.directions {
+    width: 49%;
+}
+
+.score-board {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 49%;
+}
+
+.player1, .player2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
 /* GAME BOARD STYLES  */
 
 .grid {
