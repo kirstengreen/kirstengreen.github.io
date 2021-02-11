@@ -18,6 +18,7 @@ body {
     max-width: 1100px;
     margin: 0 auto;
     padding: 32px 0;
+    background-color: rgb( 250, 250, 250 );
     font-family: 'Arimo', sans-serif;
     font-size: 16px;
 }
@@ -42,18 +43,22 @@ h1 {
 button {
     cursor: pointer;
     padding: 8px 16px;
+    background-color: rgb( 40, 59, 84 );
     font-weight: 600;
-    border: 2px solid rgb( 51, 51, 51);
+    color: rgb( 255, 255, 255 );
+    border: 2px solid rgb( 40, 59, 84 );
     border-radius: 4px;
 }
 
 button:hover {
-    background-color: rgba( 51, 51, 51, .2 );
+    background-color: rgba( 40, 59, 84, .8 );
+    border: 2px solid rgba( 40, 59, 84, .2 );
 }
 
 button.clear-board {
     margin-right: 16px;
 }
+
 
 
 /* DIRECTION AND SCOREBOARD STYLES */
@@ -86,11 +91,25 @@ button.clear-board {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
-    margin: 40px auto 16px;
+    margin: 40px auto 24px;
 }
 
 .turns, .score-board, .game-options {
     width: 32%;
+}
+
+.turns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    margin-right: 16px;
+    background-color: rgb( 51, 51, 51 );
+    border-radius: 100px;
 }
 
 .score-board {
@@ -160,7 +179,7 @@ button.clear-board {
 
 .col:hover {
     cursor: pointer;
-    background-color: rgba( 0, 0, 0, 0.2 );
+    background-color: rgba( 40, 59, 84, 0.5 );
 }
 
 
@@ -173,7 +192,7 @@ button.clear-board {
     align-items: center;
     width: 100px;
     height: 100px;
-    background-color: rgb( 255, 255, 255 );
+    background-color: rgb( 250, 250, 250 );
     border-radius: 100px;
 }
 

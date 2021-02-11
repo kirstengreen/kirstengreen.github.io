@@ -40,7 +40,12 @@ let turn = 0;
 const player1Turn = `${ player1.name }'s turn`;
 const player2Turn = `${ player2.name }'s turn`;
 
+// change player checker color with player turn text
+const player1Checker = `${ player1.checkerColor }`;
+const player2Checker = `${ player2.checkerColor }`;
+
 // show whoes turn it is on page load
+$( '.circle').addClass( player1Checker );
 $( '.player-turn' ).text( player1Turn );
 
 
@@ -60,6 +65,7 @@ const clearBoard = () => {
     }
 
     // reset turn text to first player
+    $( '.circle').removeClass( player2Checker ).addClass( player1Checker );
     $( '.player-turn' ).empty().text( player1Turn );
 
 }
@@ -108,11 +114,16 @@ const winConditions = [
     [ 20, 26, 32, 38 ], [  1,  7, 13, 19 ], [  7, 13, 19, 25 ], 
     [ 13, 19, 25, 31 ], [ 19, 25, 31, 37 ], [  0,  6, 12, 18 ], 
     [  6, 12, 18, 24 ], [ 12, 18, 24, 30 ], [ 18, 24, 30, 36 ],
-    // diagonal win conditions
+    // diagonal up win conditions
     [  2,  9, 16, 23 ], [  1,  8, 15, 22 ], [  8, 15, 22, 29 ],
     [  0,  7, 14, 21 ], [  7, 14, 21, 28 ], [ 14, 21, 28, 35 ],
     [  6, 13, 20, 27 ], [ 13, 20, 27, 34 ], [ 20, 27, 34, 41 ],
-    [ 12, 19, 26, 33 ], [ 19, 26, 33, 40 ], [ 18, 25, 32, 39 ] 
+    [ 12, 19, 26, 33 ], [ 19, 26, 33, 40 ], [ 18, 25, 32, 39 ],
+    // diagonal down win conditions
+    [  3,  8, 13, 18 ], [  4,  9, 14, 19 ], [  9, 14, 19, 24 ],
+    [  5, 10, 15, 20 ], [ 10, 15, 20, 25 ], [ 15, 20, 25, 30 ],
+    [ 11, 16, 21, 26 ], [ 16, 21, 26, 31 ], [ 21, 26, 31, 36 ],
+    [ 17, 22, 27, 32 ], [ 22, 27, 32, 37 ], [ 23, 28, 33, 38 ]
 ];
 
 
@@ -184,9 +195,11 @@ $( () => {
                 // fill color based on player's turn
                 if ( turn % 2 !== 0 ) {
                     $( event.currentTarget ).children( `.cell:nth-child( ${ cellTracker } )` ).addClass( `${ player1.checkerColor } filled` );
+                    $( '.circle').removeClass( player1Checker ).addClass( player2Checker );
                     $( '.player-turn' ).empty().text( player2Turn );
                 } else if ( turn % 2 === 0 ) {
                     $( event.currentTarget ).children( `.cell:nth-child( ${ cellTracker } )` ).addClass( `${ player2.checkerColor } filled` );
+                    $( '.circle').removeClass( player2Checker ).addClass( player1Checker );
                     $( '.player-turn' ).empty().text( player1Turn );
                 }
 
