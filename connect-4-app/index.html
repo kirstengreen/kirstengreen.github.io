@@ -14,7 +14,7 @@
     <h1>Let's Play Connect 4!</h1>
     <div class="information">
         <div class="directions">
-            <p><strong>Directions:</strong></p>
+            <h3>Directions:</h3>
             <ol>
                 <li>Direction item 1</li>
                 <li>Direction item 2</li>
@@ -32,7 +32,15 @@
             </div>
         </div>
     </div>
-    <div class="turns"><p><span class="player-turn"></span></p></div>
+    <div class="turns">
+        <div>
+            <h2 class="player-turn"></h2>
+        </div>
+        <div>
+            <button type="button" class="clear-board">Clear Board</button>
+            <button type="button" class="clear-score">Clear Score</button>
+        </div>
+    </div>
     <section class="grid">
         <div class="col">
             <div class="cell"></div>
@@ -91,7 +99,5 @@
             <div class="cell"></div>
         </div>
     </section>
-    <button type="button" class="clear-board">Clear Board</button>
-    <button type="button" class="clear-score">Clear Score</button>
 </body>
 </html>
