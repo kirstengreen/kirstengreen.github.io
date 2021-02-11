@@ -17,10 +17,11 @@ body {
     min-width: 1100px;
     max-width: 1100px;
     margin: 0 auto;
-    padding: 32px 0;
+    padding: 24px 0;
     background-color: rgb( 250, 250, 250 );
     font-family: 'Arimo', sans-serif;
     font-size: 16px;
+    color: rgb( 51, 51, 51 )
 }
 
 
@@ -61,7 +62,7 @@ button.clear-board {
 
 
 
-/* DIRECTION AND SCOREBOARD STYLES */
+/* DIRECTION STYLES */
 
 .information {
     display: flex;
@@ -72,9 +73,11 @@ button.clear-board {
 
 .directions {
     width: 80%;
-    padding: 16px 16px 0;
-    background-color: rgba( 51, 51, 51, .15 );
-    border-radius: 8px;
+    padding: 16px 24px;
+    background-color: rgba( 77, 124, 168, .2 );
+    border: 2px solid rgba( 77, 124, 168, 1 );
+    border-radius: 4px;
+    color:rgb( 0, 0, 0 );
 }
 
 .directions ol {
@@ -85,6 +88,9 @@ button.clear-board {
     margin: 0 0 4px 0;
     padding-left: 8px;
 }
+
+
+/* GAME HEADER STYLES */
 
 .game-header {
     display: flex;
@@ -115,36 +121,35 @@ button.clear-board {
 .score-board {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
 .player1, .player2 {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    padding: 8px;
-    width: 50%;
+    color: rgb( 0, 0, 0 );
+    border: 2px solid rgb( 34, 34, 34 );
+    border-radius: 4px;
 }
 
-.player1 {
-    background-color: rgba( 230, 80, 80, .2 );
-    border: 2px solid rgb( 51, 51, 51 );
-    border-right: 0;
-    border-radius: 8px 0 0 8px;
+.player1 h3, .player2 h3 {
+    padding: 8px 16px;
 }
 
-.player2 {
-    background-color: rgba( 250, 186, 68, .3 );
-    border: 2px solid rgb( 51, 51, 51 );
-    border-radius: 0 8px 8px 0;
+.player1 h3 {
+    background-color: rgba( 230, 80, 80, .8 );
+}
+
+.player2 h3 {
+    background-color: rgba( 250, 186, 68, .8 );
 }
 
 .score {
     margin-top: 4px;
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 40px;
+    font-weight: 600;
 }
 
 .game-options {
@@ -182,10 +187,6 @@ button.clear-board {
     background-color: rgba( 40, 59, 84, 0.5 );
 }
 
-
-
-/* CHECKER STYLES */
-
 .cell {
     display: flex;
     justify-content: center;
@@ -195,6 +196,10 @@ button.clear-board {
     background-color: rgb( 250, 250, 250 );
     border-radius: 100px;
 }
+
+
+
+/* CHECKER STYLES */
 
 .red {
     background-color: rgb( 230, 80, 80 );
