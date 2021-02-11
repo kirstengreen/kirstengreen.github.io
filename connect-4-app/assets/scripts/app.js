@@ -168,4 +168,11 @@ $( () => {
 
     } );
 
+
+    // clears board when a player clicks "Clear Board" button
+    $( 'button.clear-board' ).on( 'click' , ( ) => {
+        clearBoard();
+    } );
+    
+
 } );
