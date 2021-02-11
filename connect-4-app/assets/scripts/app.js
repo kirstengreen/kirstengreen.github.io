@@ -20,13 +20,28 @@ const player2 = new Player( 'Player 2', 'yellow' );
 
 
 
+///////////////
+// VARIABLES //
+///////////////
+
+
+// creates an array containing all of the board's cells
+// need this in order to match with win condition array
+const boardCells = $( 'div.cell' ).toArray();
+
+// track how many games each of the players have won
+let player1Wins = 0;
+let player2Wins = 0;
+
+// tracks how many plays have been made and determines whose turn it is
+// ODD = player that goes first & EVEN = player that goes second
+let turn = 0;
+
+
+
 ///////////////////////////
 // DEFINE WIN CONDITIONS //
 ///////////////////////////
-
-
-// with a little help from Ania Kubów https://www.youtube.com/watch?v=dBlSiGOFjUY
-// helped me understand how to check each board cell against each possible win condition
 
 
 const winConditions = [
@@ -55,18 +70,12 @@ const winConditions = [
 ];
 
 
-// creates an array containing all of the board's cells
-// need this in order to match with win condition array
-const boardCells = $( 'div.cell' ).toArray();
-
-
-// track how many games each of the players have won
-let player1Wins = 0;
-let player2Wins = 0;
-
 
 // checks to see if a player has won the game
 const checkForWin = () => {
+
+    // with a little help from Ania Kubów https://www.youtube.com/watch?v=dBlSiGOFjUY
+    // helped me understand how to check each board cell against each possible win condition
 
     // checks each winCondition to see if requirements are met for a win
     for ( let i = 0; i < winConditions.length; i++) {
@@ -85,6 +94,7 @@ const checkForWin = () => {
 
             player1Wins ++;
             alert( `${ player1.name } wins!` );
+            // clearBoard();
             $( 'div .player1 .score' ).empty().text( `${ player1Wins }` );
         
         // if all four cells match player 2's checker color, player 2 wins 
@@ -95,7 +105,9 @@ const checkForWin = () => {
 
             player2Wins ++;
             alert( `${ player2.name } wins!` );
+            // clearBoard();
             $( 'div .player2 .score' ).empty().text( `${ player2Wins }` );
+
         }
     }
 };
@@ -106,18 +118,13 @@ const checkForWin = () => {
 // AFTER LOAD //
 ////////////////
 
+
 $( () => {
-
-    // tracks how many plays have been made and determines whose turn it is
-    // ODD = player that goes first & EVEN = player that goes second
-    let turn = 0; 
-
 
     // listens for the player to click a column 
     $( '.col' ).on( 'click' , ( event ) => {
         let cellTracker = 1; // tracks the cells that are filled in the column 
         let cellFilled = false; // allows a break in the loop when a cell is filled
-
 
         // places the players checker on event
         // while all of the cells are not filled, find the first cell that can be filled
@@ -135,12 +142,12 @@ $( () => {
                 }
 
                 cellFilled = true; // cell is now filled, exit loop
+
             }
         }
 
         checkForWin();
 
     } );
-
 
 } );
