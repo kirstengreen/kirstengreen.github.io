@@ -60,6 +60,11 @@ const winConditions = [
 const boardCells = $( 'div.cell' ).toArray();
 
 
+// track how many games each of the players have won
+let player1Wins = 0;
+let player2Wins = 0;
+
+
 // checks to see if a player has won the game
 const checkForWin = () => {
 
@@ -73,23 +78,22 @@ const checkForWin = () => {
         const checker4 = boardCells[ winConditions[ i ][ 3 ] ];
 
         // if all four cells match player 1's checker color, player 1 wins 
-        if ( $( checker1 ).hasClass( `${player1.checkerColor}` ) && 
-            $( checker2 ).hasClass( `${player1.checkerColor}` ) && 
-            $( checker3 ).hasClass( `${player1.checkerColor}` ) && 
-            $( checker4 ).hasClass( `${player1.checkerColor}` ) ) {
+        if ( $( checker1 ).hasClass( `${ player1.checkerColor }` ) && 
+            $( checker2 ).hasClass( `${ player1.checkerColor }` ) && 
+            $( checker3 ).hasClass( `${ player1.checkerColor }` ) && 
+            $( checker4 ).hasClass( `${ player1.checkerColor }` ) ) {
 
-            const $h1 = $( '<h1>' ).addClass( 'winner' ).text( `${ player1.name } wins!` );
-            $( '.result' ).append( $h1 );
+            player1Wins ++;
+            $( 'div .player1 .score' ).empty().text( `${ player1Wins }` );
         
         // if all four cells match player 2's checker color, player 2 wins 
-        } else if ( $( checker1 ).hasClass( `${player2.checkerColor}` ) && 
-            $( checker2 ).hasClass( `${player2.checkerColor}` ) && 
-            $( checker3 ).hasClass( `${player2.checkerColor}` ) && 
-            $( checker4 ).hasClass( `${player2.checkerColor}` ) ) {
+        } else if ( $( checker1 ).hasClass( `${ player2.checkerColor }` ) && 
+            $( checker2 ).hasClass( `${ player2.checkerColor }` ) && 
+            $( checker3 ).hasClass( `${ player2.checkerColor }` ) && 
+            $( checker4 ).hasClass( `${ player2.checkerColor }` ) ) {
 
-            const $h1 = $( '<h1>' ).addClass( 'winner' ).text( `${ player2.name } wins!` );
-            $( '.result' ).append( $h1 );
-
+            player2Wins ++;
+            $( 'div .player2 .score' ).empty().text( `${ player2Wins }` );
         }
     }
 };
