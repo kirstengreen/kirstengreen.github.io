@@ -42,7 +42,8 @@ While attending General Assembly for Software Programing (Jan - Apr, 2021), I re
 
 
 ## Future Features
-* Allow players to set the names instead of Player 1 and Player 2
+* Allow players to set their names instead of using Player 1 and Player 2
 * Allow players to change their checker colors
 * Automatically switch who goes first each round
 * Allow a player to play against an AI
+
