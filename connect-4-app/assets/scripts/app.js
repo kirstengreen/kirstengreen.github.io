@@ -48,6 +48,7 @@ $( '.circle').addClass( player1Checker );
 $( '.player-turn' ).text( player1Turn );
 
 
+
 //////////////////////
 // CLEAR GAME BOARD //
 //////////////////////
@@ -147,10 +148,17 @@ const checkForWin = () => {
             $( checker2 ).hasClass( `${ player1.checkerColor }` ) && 
             $( checker3 ).hasClass( `${ player1.checkerColor }` ) && 
             $( checker4 ).hasClass( `${ player1.checkerColor }` ) ) {
-
+            
+            // increase player 1's win counter
             player1Wins ++;
+
+            // notifies of winner
             alert( `${ player1.name } wins!` );
+
+            // clears and updates board for new round
             clearBoard();
+
+            // updates player 1's scoreboard
             $( 'div .player1 .score' ).empty().text( `${ player1Wins }` );
         
         // if all four cells match player 2's checker color, player 2 wins 
@@ -159,9 +167,16 @@ const checkForWin = () => {
             $( checker3 ).hasClass( `${ player2.checkerColor }` ) && 
             $( checker4 ).hasClass( `${ player2.checkerColor }` ) ) {
 
+            // increase player 2's win counter
             player2Wins ++;
+
+            // notifies of winner
             alert( `${ player2.name } wins!` );
+
+            // clears and updates board for new round
             clearBoard();
+
+            // updates player 2's scoreboard
             $( 'div .player2 .score' ).empty().text( `${ player2Wins }` );
 
         }
@@ -193,11 +208,20 @@ $( () => {
 
                 // fill color based on player's turn
                 if ( turn % 2 !== 0 ) {
+
+                    // fills if player 1's choice
                     $( event.currentTarget ).children( `.cell:nth-child( ${ cellTracker } )` ).addClass( `${ player1.checkerColor } filled` );
+
+                    // updates player's turn indicator
                     $( '.circle').removeClass( player1Checker ).addClass( player2Checker );
                     $( '.player-turn' ).empty().text( player2Turn );
+
                 } else if ( turn % 2 === 0 ) {
+
+                    // fills if player 2'z choice
                     $( event.currentTarget ).children( `.cell:nth-child( ${ cellTracker } )` ).addClass( `${ player2.checkerColor } filled` );
+                    
+                    // updates player's turn indicator
                     $( '.circle').removeClass( player2Checker ).addClass( player1Checker );
                     $( '.player-turn' ).empty().text( player1Turn );
                 }
@@ -207,6 +231,7 @@ $( () => {
             }
         }
 
+        // checks to see if a player has won
         checkForWin();
 
     } );
