@@ -8,7 +8,6 @@ class Player {
     constructor ( name, checker ) {
         this.name = name;
         this.checkerColor = checker;
-        // this.moves = [];
     }
 }
 
