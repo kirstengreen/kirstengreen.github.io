@@ -121,7 +121,7 @@ button.clear-board {
 .score-board {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -132,10 +132,14 @@ button.clear-board {
     color: rgb( 0, 0, 0 );
     border: 2px solid rgb( 34, 34, 34 );
     border-radius: 4px;
+    width: 40%
 }
 
 .player1 h3, .player2 h3 {
+    width: 100%;
     padding: 8px 16px;
+    margin: 0;
+    text-align: center;
 }
 
 .player1 h3 {
@@ -147,7 +151,7 @@ button.clear-board {
 }
 
 .score {
-    margin-top: 4px;
+    margin: 4px auto;
     font-size: 40px;
     font-weight: 600;
 }
