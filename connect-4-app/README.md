@@ -38,7 +38,7 @@ While attending General Assembly for Software Programing (Jan - Apr, 2021), I re
 
 
 ## Project Planning
-
+![alt text](https://kirstengreen.github.io/connect-4-app/assets/img/project-planning.png "List of requirements and features")
 
 
 ## Future Features
