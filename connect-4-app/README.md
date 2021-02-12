@@ -40,6 +40,8 @@ While attending General Assembly for Software Programing (Jan - Apr, 2021), I re
 ## Project Planning
 ![alt text](https://kirstengreen.github.io/connect-4-app/assets/img/project-planning.png "List of requirements and features")
 
+![alt text](https://kirstengreen.github.io/connect-4-app/assets/img/up-diagonal-solutions.png "Example of diagonal solutions")
+
 
 ## Future Features
 * Allow players to set their names instead of using Player 1 and Player 2
